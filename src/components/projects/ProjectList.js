@@ -2,19 +2,19 @@ import React from 'react';
 
 import ProjectSummary from './ProjectSummary';
 
-const ProjectList = () => {
+const ProjectList = ({projects}) => {
     return (
         <div className="project-list section">
+            {
+                // If we do have projects, then we'll map
+                // If not then there are no projects to map
 
-        {/* 
-            Once hooked up to the database, we'll loop around the database data
-            and only really need to append one <ProjectSummary />. For now this
-            is just placeholding.
-        */}
-            <ProjectSummary />
-            <ProjectSummary />
-            <ProjectSummary />
-            <ProjectSummary />
+                projects && projects.map((project) => {
+                    return (
+                        <ProjectSummary project={project} key={project.id} />
+                    )
+                })
+            }
         </div>
     )
 };
